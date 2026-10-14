@@ -1,0 +1,24 @@
+# Goal
+# End-effector pose for grasping the object
+geometry_msgs/PoseStamped pick_pose
+# End-effector pose for releasing the object
+geometry_msgs/PoseStamped place_pose
+# Collision object ID in the planning scene (leave empty to skip scene management)
+string object_id
+# Standoff distance along EEF Z-axis before/after pick (m)
+float64 approach_distance
+# Retreat distance along EEF Z-axis after pick / after place (m)
+float64 retreat_distance
+# Gripper gap when open (m)
+float64 gripper_open_width
+# Gripper gap when closed / grasping (m)
+float64 gripper_close_width
+---
+# Result
+bool success
+string message
+int32 error_code
+---
+# Feedback
+string current_state
+float32 progress
