@@ -1,0 +1,26 @@
+# Goal
+
+# Name given to the object in the planning scene
+string object_id
+
+# Current pose of the object (the pose of the object frame)
+geometry_msgs/PoseStamped object_pose
+
+# Desired pose of the object after placing (the pose of the object frame)
+geometry_msgs/PoseStamped target_pose
+
+# Box dimensions of the object in metres (x, y, z in the object frame)
+geometry_msgs/Vector3 object_size
+---
+# Result
+
+bool success
+string message
+
+# moveit_msgs/MoveItErrorCodes value
+int32 error_code
+---
+# Feedback
+
+# One of: PLANNING, EXECUTING
+string state

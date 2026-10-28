@@ -1,4 +1,3 @@
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -8,42 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- Describe new features that will be in the next release.
-- For example: Initial implementation of feature X.
-
-### Changed
-- Describe changes to existing functionality.
-- For example: Refactored module Y for improved performance.
-
-### Deprecated
-- Describe features that are still available but will be removed in future versions.
-- For example: Deprecated old API endpoint `/v1/users`. Use `/v2/users` instead.
-
-### Removed
-- Describe features that have been removed in this (unreleased) version.
-- For example: Removed support for legacy configuration option Z.
-
-### Fixed
-- Describe any bug fixes.
-- For example: Fixed an issue where login failed with certain special characters.
-- For example: Corrected calculation error in report generation.
-
-### Security
-- Describe any security vulnerabilities fixed or security improvements.
-- For example: Patched critical security vulnerability related to user authentication.
-
-## [1.0.0] - 2023-10-26
+## [0.1.0] - 2026-10-16
 
 ### Added
-- Initial public release of the project.
-- Core functionality for [Project Name].
-
-## [0.1.0] - 2023-09-15
-
-### Added
-- First experimental release.
-- Basic data processing and visualization features.
-
-### Fixed
-- Resolved issue with data import from CSV files.
+- Pick-and-place action server `pick_place_node`, built on MoveIt Task
+  Constructor (MTC). The whole task is planned first and executed only if
+  planning succeeds.
+- Action interface `qrb_ros_pick_place/action/PickPlace`. The goal holds the
+  object id, size, current pose and target pose; the feedback reports PLANNING
+  or EXECUTING; the result holds success, message and a MoveIt error code.
+- MTC task following the MoveIt pick-and-place tutorial: open hand, approach,
+  sampled grasp pose with IK, close hand, attach, lift, sampled place pose with
+  IK, open hand, detach, retreat, optional return home.
+- The object is added to the planning scene as a box for every goal.
+- Cancellation while planning through `Task::preempt()`.
+- ROS 2 parameters for the group, frame and named pose names of the robot, the
+  grasp frame, the motion distances, the planning limits and the scaling
+  factors. Defaults are in `config/pick_place.yaml`.
+- Launch file `pick_place.launch.py`, which loads the MoveIt configuration of
+  the robot with `MoveItConfigsBuilder`.
+- README with the architecture, the API, the setup of `move_group` and a usage
+  example.
